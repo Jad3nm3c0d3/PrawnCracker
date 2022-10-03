@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mini_man_run!</title>
+        <style>
+            .header {
+                position:sticky;
+                background: rgba(0, 204, 255, 0.993);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Welcome To Mini Box Slide!!!</h1>
+        </div>
+        <canvas id="canvas" width="1560" height="540"></canvas>
+        <script>
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d")
+            function floor(x, height) {
+            this.x = x;
+            this.width = 200
+            this.height = height;
+         }
+          var world = {
+              height: 540,
+              width: 1560,
+              gravity: 13,
+              highestFloor: 240,
+              lowestFloor:80,
+              speed: 7,
+              distanceTravelled: 0,
+              maxSpeed: 15,
+              titlesPassed: 0,
+              autoScroll: true,
+              floortiles: [
+                  new floor(80, 140)
+              ],
+              stop: function() {
+                  this.autoScroll = false;
+              },
+              moveFloor: function() {
+                  for(index in this.floortiles) {
+                      var tile = this.floortiles[index]
+                      tile.x -= this.speed;
+                      this.distanceTravelled += this.speed;
+                  }
+              },
+              addFutureTiles: function() {
+                  if(this.floortiles.length >=10) {
+                      return;
+                  }
+                  var previoustile= this.floortiles[this.floortiles.length -1]
+                  var biggestjumpableheight = previoustile.height + player.height * 3.5
+                  if(biggestjumpableheight > this.highestFloor) {
+                      biggestjumpableheight = this.highestFloor;
+                  }
+                  var randomheight = Math.floor(Math.random() * biggestjumpableheight) + player.height;
+                  var leftvalue = (previoustile.x + previoustile.width);
+                  var next = new floor(leftvalue, randomheight);
+                  this.floortiles.push(next);
+              },
+              cleanOldTiles: function() {
+                  for(index in this.floortiles) {
+                    if(this.floortiles[index].x <= -this.floortiles[index].width) {
+                        this.floortiles.splice(index,1);
+                        this.tilepassed++;
+                        if(this.tilepassed % 3 == 0 && this.speed < this.maxSpeed) {
+                            this.speed++;
+                        }
+                    }
+                  }
+              },
+              getDistancetoFloor: function(playerX) {
+                  for(index in this.floortiles) {
+                      var tile = this.floortiles[index];
+                      if(tile.x <= playerX && tile.x + tile.width >= playerX) {
+                          return tile.height;
+                      }
+                  }
+                  return -1;
+              },
+              tick: function() {
+                  if(!this.autoScroll){
+                      return;
+                  }
+                  this.cleanOldTiles();
+                  this.addFutureTiles();
+                  this.moveFloor();
+              },
+              draw: function() {
+                  ctx.fillStyle = "skyblue";
+                   ctx.fillRect(0, 0, this.width, this.height);
+                   for(index in this .floortiles) {
+                       var tile = this.floortiles[index];
+                       var y = world.height - tile.height;
+                       ctx.fillStyle = "green";
+                       ctx.fillRect(tile.x, y, tile.width, tile.height);
+                   }
+                   ctx.fillStyle = "orange";
+                   ctx.font = "28px Didot";
+                   ctx.fillText("DISTANCE_TRAVELLED: " + this.distanceTravelled, 10, 75);
+                   ctx.fillText("SPEED_AT_MOMENT_IS: "+ this.speed, 10, 40);
+                   ctx.fillStyle = "yellow";
+              }
+            };
+            var player = {
+                x:160,
+                y:340,
+                downwardforce: world.gravity,
+                jumpheight: 0,
+                height: 20,
+                width: 20,
+                getDistanceFor: function(x) {
+                    var platformBelow = world.getDistancetoFloor(x);
+                    return world.height - this.y - platformBelow;
+                },
+                applyGravity: function() {
+                    this.currentdistanceaboveground = this.getDistanceFor(this.x);
+                    var righthandsidedistance = this.getDistanceFor(this.x + this.width);
+                    if(this.currentdistanceaboveground < 0 || righthandsidedistance < 0) {
+                        world.stop();
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, "500")
+                    }
+                },
+                processGravity: function() {
+                    this.y += this.downwardforce;
+                    var floorheight = world.getDistancetoFloor(this.x, this.width);
+                    var topyofplatform = world.height - floorheight;
+                    if(this.y > topyofplatform) {
+                        this.y = topyofplatform;
+                    }
+                     if(this.downwardforce < 0) {
+                         this.jumpheight += (this.downwardforce * -1);
+                         if(this.jumpheight >= player.height * 6) {
+                             this.downwardforce = world.gravity;
+                             this.jumpheight = 0;
+                         }
+                     }
+                },
+                keyPress: function(keyinfo) {
+                    var floorheight = world.getDistancetoFloor(this.x, this.width);
+                    var onthefloor = floorheight == (world.height - this.y);
+                    if(onthefloor) {
+                        this.downwardforce = -8
+                    }
+                },
+                tick: function() {
+                    this.processGravity();
+                    this.applyGravity();
+                },
+                draw: function() {
+                    ctx.fillstyle = "maroon";
+                    ctx.fillRect(player.x, player.y - player.height, this.height, this.width);
+                }
+            };
+            window.addEventListener("keypress", function(keyinfo) { player.keyPress(keyinfo); }, false);
+            function tick() {
+                player.tick();
+                world.tick();
+                world.draw();
+                player.draw();
+                window.setTimeout("tick()", 1000/60);
+                }
+            tick();
+        </script>
+    </body>
+</html>
