@@ -3,6 +3,9 @@
     <head>
         <title>Jad3n's page</title>
         <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+
+
         <style>
             html, body {
                 padding: 0px;
@@ -42,19 +45,37 @@
                 font-size: 30px;
             }
         </style>
+
+
+
     </head>
+
+    <script>
+    </script>
+
     <body style="background-color: rgb(129, 125, 125);">
-        <script>
-            var message = "hello";
-            var name = prompt("What is your name?");
-            alert(message + " " + name);
-            alert("welcome");
-        </script>
         <header class="header">
-            <h1>Welcome!!!</h1>
+            <div style="float:left">
+                <img src="favicon.ico">
+            </div>
+            <h1 style="display:contents;">welcome!!!</h1>
+            <div style="float:right">
+                <img src="favicon.ico">
+            </div>
         </header>
+
         <div class="main">
-            <strong>Hello! Welcome...</strong>
+                <button onclick="myFunction()">Try this button</button>
+
+                <div id="mine" style="font-size:50px">
+                    Press ok or cancel!!!
+                </div>
+
+                <div id="hi">
+
+                </div>
+
+            </strong>
             <p>
                 My name is <strong>Prawncracker</strong>.
             </p>
@@ -62,12 +83,14 @@
                 <a href="jad3n.html">please tap this to go to a small list about me.</a>
             </p>
             <hr>
+
             <p>
                 i am an "adulting" person who likes: 
                 <li>to play video games</li> 
                 <li>coding</li>
                 <li>Nando's chicken.</li>
             </p>
+
             <div style="width: 300px; text-align: center;">
                 <video width="640" height="480" controls>
                     <source src="person.mp4" type="video/mp4">
@@ -75,13 +98,36 @@
                 <h2><strong>^</strong></h2>
                 <h3><strong>this is a great animation by me.</strong></h3>
             </div>
+
             <hr>
             <h4><strong>Games!</strong></h4>
             <p><a href="mini man run.html">play a game. To jump press space bar.</a></p>
             <p>my minecraft account is called Prawncracker101, i play my own server and i also play on the Hypixel minecrat server.</p>
+            
             <footer class="footer">
                 <h1>goodbye...</h1>
             </footer>
         </div>
+
+
+        <script>
+        //script            
+            var name = prompt("What is your name?");
+            alert("welcome " + name);
+
+            function myFunction() {
+                var txt;
+                if (confirm("Press a button!")) {
+                    txt = `You pressed OK! ${name}`;
+                } else {
+                    txt = `You pressed Cancel! ${name}`;
+                }
+                document.getElementById("mine").innerHTML = txt;
+            }
+
+            document.getElementById("mine").innerHTML = txt;
+        </script>
+
+
     </body>
 </html>
