@@ -1,36 +1,203 @@
+<!doctype html>
 <html>
     <head>
-        <title>contact me</title>
+        <title>Jad3n's page</title>
         <link rel="icon" type="image/x-icon" href="favicon.ico">
-    </head>
-    <style>
-        hr {
-            border-style: dotted none none;
-            border-width: 5px;
-            height: 3px;
-            border-color: crimson;
-            width: 5%;
-        }
-        li {
-            text-align: center;
-        }
-    </style>
-    <body style="text-align:center; background-color: rgb(129, 125, 125);">
-        <h1 style="text-align: center;">these are my contact details</h1>
-        <p>
-            <li>live: somwhere in the world</li>
-            <hr>
-            <li>email: bob@bob.bob</li>
-            <hr>
-            <button class="hi" onclick="myfunction()">press button now</button>
-            <li id="bob">age: nunya...</li>
-        </p>
-        <script>
-            function myfunction() {
-                var txt
-                txt = "age= nunya buisness!!!"
-                document.getElementById("bob").innerHTML = txt;
+
+
+
+        <style>
+            html, body {
+                padding: 0px;
+                margin: 0px;
             }
+            hr {
+                border-style: dotted none none;
+                border-width: 5px;
+                height: 3px;
+                border-color: crimson;
+                width: 99%;
+            }
+            .header {
+                position: sticky;
+                overflow: hidden;
+                width: 100%;
+                height: 135px;
+                padding: 20px;
+                text-align: center;
+                background: rgb(36, 36, 36);
+                color: red;
+                font-size: 30px;
+            }
+            .main {
+                position: relative;
+                top: 100px;
+            }
+            .footer {
+                position: sticky;
+                overflow: hidden;
+                width: 100%;
+                height: 135px;
+                padding: 20px;
+                text-align: center;
+                background: rgb(36, 36, 36);
+                color: red;
+                font-size: 30px;
+            }
+        </style>
+
+
+
+    </head>
+
+    <script>
+    </script>
+
+    <body style="background-color: rgb(129, 125, 125);">
+        <header class="header">
+            <div style="float:left">
+                <img src="favicon.ico">
+            </div>
+            <h1 style="display:contents;">welcome!!!</h1>
+            <div style="float:right">
+                <img src="favicon.ico">
+            </div>
+        </header>
+
+    <div class="main">
+            <button onclick="myFunction()">Try this button</button>
+
+            <div id="mine" style="font-size:50px">
+                Press ok or cancel!!!
+            </div>
+
+            <div id="hi">
+
+            </div>
+
+        </strong>
+        <p>
+            My name is <strong>Prawncracker</strong>.
+        </p>
+        <p>
+            <a href="jad3n.html">please tap this to go to a small list about me.</a>
+        </p>
+        <hr>
+
+        <p>
+            i am an "adulting" person who likes: 
+            <li>to play video games</li> 
+            <li>coding</li>
+            <li>Nando's chicken.</li>
+        </p>
+        <p><a href="contact.html">tap to contact me</a></p>
+        <div style="width: 300px; text-align: center;">
+            <video width="640" height="480" controls>
+                <source src="person.mp4" type="video/mp4">
+            </video>
+            <h2><strong>^</strong></h2>
+            <h3><strong>this is a great animation by me.</strong></h3>
+        </div>
+        <hr>
+
+
+        <h4><strong>Games!</strong></h4>
+        <p><a href="mini man run.html">play a game. To jump press space bar.</a></p>
+        <p>my minecraft account is called Prawncracker101, i play my own server and i also play on the Hypixel minecrat server.</p>
+        <p>
+
+        <hr>
+
+        <div>
+            <div><h1>Please fill in the form bellow you Plebs.</h1></div>
+            <input type="text" id="name" name="name" minlength="4" placeholder="name here..." maxlength="8" size="10">
+        <p>
+
+        </p>
+      </div>
+        <input id="" type="text" role="textbox" size="10" name="" placeholder="type here..." class="bob" autocomplete="on" style="width: 750;">
+      <div>
+          <h1>
+              age...
+          </h1>
+      </div>
+      <input type="date" id="start" name="trip-start" value="" min="" max="13/10/2022">
+      <div>
+          <input type="checkbox" id="scales" name="scales" unchecked>
+          <label for="age">0-10 years old</label>
+        </div>
+        <div>
+          <input type="checkbox" id="scales" name="scales" unchecked>
+          <label for="age2">11-18 years old</label>
+        </div>
+        <div>
+          <input type="checkbox" id="scales" name="scales" unchecked>
+          <label for="age3">19-25 years old</label>
+        </div>
+        <div>
+          <input type="checkbox" id="scales" name="scales" unchecked>
+          <label for="age4">26-40 years old</label>
+        </div>
+        <div>
+          <input type="checkbox" id="scales" name="scales" unchecked>
+          <label for="age5">41-50 years old</label>
+        </div>
+        <div>
+          <input type="checkbox" id="scales" name="scales" unchecked>
+          <label for="age6">51-60 years old</label>
+        </div>
+        <div>
+          <input type="checkbox" id="scales" name="scales" unchecked>
+          <label for="age">61-70 years old</label>
+        </div>
+        <div>
+          <input type="checkbox" id="scales" name="scales" unchecked>
+          <label for="age">71+ years old</label>
+        </div>
+        <h1>Your Fav. Color:</h1>
+        <div>
+          <input type="color" id="color" name="color"
+                 value="">
+          <label for="color"></label>
+        </div>
+        <h1>How Smart Are you?</h1>
+        <div>
+        <input type="range" id="brain" name="brain"
+        min="0" max="15">
+        <label for="">smartness scale</label>
+        </div>
+        <h1>
+        Email:
+        </h1>
+        <label for="email">
+        Enter your email:</label>
+        <input type="email" id="email" size="30"> 
+        </div>
+
+        <footer class="footer">
+            <h1>goodbye...</h1>
+        </footer>
+
+
+
+        <script>
+        //script            
+            var name = prompt("What is your name?");
+            alert("welcome " + name);
+
+            function myFunction() {
+                var txt;
+                if (confirm("Press a button!")) {
+                    txt = `You pressed OK! ${name}`;
+                } else {
+                    txt = `You pressed Cancel! ${name}`;
+                }
+                document.getElementById("mine").innerHTML = txt;
+            }
+
+            document.getElementById("mine").innerHTML = txt;
         </script>
+
+
     </body>
 </html>
